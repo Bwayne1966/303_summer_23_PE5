@@ -40,3 +40,17 @@ def test_out_of_range():
     with pytest.raises(IndexError):
         result = generate_table()  # This should raise an IndexError as we're exceeding the size limit
         assert result[13][13]
+
+@pytest.mark.parametrize( 
+"row, col, expected", 
+    [ 
+    (0, 0, '    X'), 
+    (1, 0, '    1'), 
+    (0, 1, '    1'), 
+    (1, 1, '    1'), 
+    ] 
+) 
+def test_generate_table_basic3(row, col, expected): 
+    assert generate_table()[row][col] == expected
+
+
